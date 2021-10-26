@@ -16,13 +16,14 @@ class ProductCategory(models.Model):
 	categoryId = models.CharField(null = False,unique = True,blank = False,max_length = 12,primary_key = True)
 	categoryName = models.CharField(unique=True,null=False,blank=False,max_length=200)
 	def __str__(self):
-		return self.characterId+" "+self.categoryName
+		return self.categoryId+" "+self.categoryName
 
 class Product(models.Model):
 	productId = models.CharField(null = False,unique = True,blank = False,max_length = 12,primary_key = True)
 	productName = models.CharField(null=False,max_length = 200)
 	productCategory = models.ForeignKey(ProductCategory,on_delete = models.CASCADE)
 	productPrice = models.FloatField(null = False,blank = False)
+	productStock = models.PositiveIntegerField(blank = False,null = True)
 	productDesc = models.TextField(null = False, blank = False)
 	productLoc = models.TextField(null = True, blank = True)
 	def __str__(self):
