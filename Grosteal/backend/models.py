@@ -1,4 +1,5 @@
 from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
 from re import T
 
 # Create your models here.
@@ -6,13 +7,13 @@ class Users(models.Model):
 	userId = models.CharField(null = False, max_length = 12 ,unique = True, blank = False,primary_key = True)
 	userName = models.CharField(null = False, blank = False, max_length = 100)
 	email = models.EmailField(null = False, blank = False, unique = True)
-	phno = models.PositiveBigIntegerField(null = False,blank = False,unique = True)
+	phno = PhoneNumberField(null = False,blank = False,unique = True)
 	address = models.TextField(null = False,blank = False)
 	def __str__(self):
 		return self.userId+" "+self.userName
 
 class ProductCategory(models.Model):
-	characterId = models.CharField(null = False,unique = True,blank = False,max_length = 12,primary_key = True)
+	categoryId = models.CharField(null = False,unique = True,blank = False,max_length = 12,primary_key = True)
 	categoryName = models.CharField(unique=True,null=False,blank=False,max_length=200)
 	def __str__(self):
 		return self.characterId+" "+self.categoryName
