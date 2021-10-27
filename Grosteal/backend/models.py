@@ -42,5 +42,8 @@ class Orders(models.Model):
 class OrderDetails(models.Model):
 	product = models.ForeignKey(Product,on_delete = models.CASCADE)
 	order = models.ForeignKey(Orders,on_delete = models.CASCADE)
+	trackingId = models.CharField(max_length = 6,blank = False,null = False,primary_key = True)
+	def __str__(self):
+		return self.trackingId
 
 
